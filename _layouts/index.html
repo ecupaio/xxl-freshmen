@@ -1,0 +1,31 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% include head.html %}
+</head>
+
+<body>
+    {% if site.gtm %}
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.gtm }}"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    {% endif %}
+    <div id="wrapper">
+        <div id="header">
+            <h1>{{ site.title }}</h1>
+        </div>
+        <div id="main">
+            {{ page.content }}
+        </div>
+    </div>
+    <div id="footer">
+    </div>
+    <!-- Scripts -->
+    <script src="/js/site_functions.js"></script>
+</body>
+</html>

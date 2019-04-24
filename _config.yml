@@ -1,0 +1,34 @@
+---
+title: Jekyll Template
+description: site description
+meta_img:
+twitter:
+favicon:
+url:
+gtm:
+timezone: America/New York
+future: true
+markdown: kramdown
+kramdown:
+  auto_ids: false
+exclude:
+- Gemfile
+- Gemfile.lock
+- node_modules
+- gruntfile.js
+sass:
+  sass_dir: _sass
+  style: compressed
+plugins:
+  - jekyll-sitemap
+collections:
+  terms:
+    output: true
+defaults:
+- scope:
+    path: ''
+  values:
+    layout: index
+# collections:
+#   collection-name:
+#     output: true
