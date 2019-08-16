@@ -1,0 +1,20 @@
+[
+  {
+    "year": 2019,
+    "artists": [
+      {
+        "name": "abc",
+        "freestyle": "abc123",
+      }
+    ],
+    "cyphers": [
+      {
+        "id": "abc123",
+        "artists": [
+          "abc","xyz","stsu"
+        ]
+      }
+
+    ]
+  }
+]

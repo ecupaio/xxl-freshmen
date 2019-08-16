@@ -1,6 +1,95 @@
 ---
 title: Home Page
 layout: default
----
 
-home page content
+
+---
+<div class="vid-overlay">
+  <div class="close-vid">
+    &times;
+  </div>
+  <div id="vid-player">
+    <i class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
+  </div>
+</div>
+<main id="home">
+  <section id="banner">
+    <div class="inner-section">
+
+    </div>
+  </section>
+  <section id="years">
+    <div class="inner-section">
+      {% assign years = site.years | sort: 'title' %}
+      {% for year in years %}
+
+      {% assign cyphers = year.artists | map: 'cypher' | uniq %}
+      {% assign freestyles = year.artists | map: 'freestyle' | uniq %}
+
+      <div class="year">
+
+        <div class="year-title">
+          {{ year.title }}
+        </div>
+
+        <div class="year-content">
+          {% if cyphers.size > 1 %}
+          <div class="vid-group">
+            <h2>Cyphers</h2>
+            <div class="cyphers vid-row">
+
+              {% for cypher in cyphers  %}
+              {% if cypher %}
+              <div class="cypher-col vid-col" >
+                <div class="cypher-vid vid-link" data-vid="{{ cypher }}" style="background-image:url()">
+                  <img src="https://img.youtube.com/vi/{{ cypher }}/mqdefault.jpg" class="vid-thumb" alt="">
+                  <div class="vid-play">
+                    <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <div class="cypher-artists">
+                  {% for artist in year.artists %}
+                  {% if artist.cypher and artist.cypher == cypher %}
+                    <span class="cypher-artist">{{ artist.name }}</span>
+                  {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+              {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+          
+          {% if freestyles.size > 1 %}
+          <div class="vid-group">
+            <h2>Freestyles</h2>
+            <div class="freestyles vid-row">
+              {% for artist in year.artists %}
+              {% if artist.freestyle %}
+              <div class="vid-col">
+                <div class="vid-link" data-vid="{{ artist.freestyle }}" style="background-image:url()">
+                  <img src="https://img.youtube.com/vi/{{ artist.freestyle }}/mqdefault.jpg" class="vid-thumb" alt="">
+                  <div class="vid-play">
+                    <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <div class="artist-name">
+                  {{ artist.name }}
+                </div>
+              </div>
+              {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+
+        </div>
+
+      </div>
+      {% endfor %}
+    </div>
+
+  </section>
+
+</main>

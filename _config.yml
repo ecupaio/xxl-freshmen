@@ -22,13 +22,10 @@ sass:
 plugins:
   - jekyll-sitemap
 collections:
-  terms:
-    output: true
+  years:
+    output: false
 defaults:
 - scope:
     path: ''
   values:
     layout: default
-# collections:
-#   collection-name:
-#     output: true
