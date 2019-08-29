@@ -12,15 +12,28 @@ layout: default
     <i class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
   </div>
 </div>
+<div id="search-overlay">
+  <div class="search-input-box">
+    <i class="fa fa-search"></i>
+    <input type="text" id="search-input" placeholder="Type Artist name">
+  </div>
+  <div id="results-container">
+
+  </div>
+</div>
 <main id="home">
   <section id="banner">
     <div class="inner-section">
+      <h1>XXL Freshmen</h1>
+      <p>
+        Every freestyle and cypher indexed from 2009 to current year
+      </p>
 
     </div>
   </section>
   <section id="years">
     <div class="inner-section">
-      {% assign years = site.years | sort: 'title' %}
+      {% assign years = site.years | sort: 'title' | reverse %}
       {% for year in years %}
 
       {% assign cyphers = year.artists | map: 'cypher' | uniq %}
@@ -60,7 +73,7 @@ layout: default
             </div>
           </div>
           {% endif %}
-          
+
           {% if freestyles.size > 1 %}
           <div class="vid-group">
             <h2>Freestyles</h2>

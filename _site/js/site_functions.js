@@ -41,5 +41,15 @@ $(function() {
       $('.vid-overlay').addClass('min');
     }
   });
+  //site search
+  $('#search-input').keyup(function() {
+    $('#results-container').html('');
+    SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('results-container'),
+      json: '/search.json',
+      searchResultTemplate: '<div>{name}</div>'
+    });
+  });
 
 });
