@@ -40,7 +40,7 @@ module.exports = function(grunt) {
         command: 'bundle'
       },
       jekyllServe: {
-        command: 'bundle exec jekyll serve --livereload '
+        command: 'bundle exec jekyll serve --livereload'
       }
     },
 		concurrent: {

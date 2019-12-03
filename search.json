@@ -5,7 +5,7 @@ layout: null
   {%- for year in site.years -%}
   {%- for artist in year.artists -%}
   {
-    "name": "{{ artist.name }}",
+    "artist": "{{ artist.name }}",
     "cypher": "{{ artist.cypher }}",
     "freestyle": "{{ artist.freestyle }}"
   }{% unless forloop.last %},{% endunless %}

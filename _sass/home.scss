@@ -10,6 +10,83 @@
     }
 
   }
+  #years {
+    //background-color: $black;
+
+    .year {
+      display: block;
+
+      padding: 1rem 4rem;
+      .year-title {
+        background-color: $red;
+        display: inline-block;
+        color: $white;
+        padding: 0.5rem 1rem;
+        font-size: 3rem;
+        font-weight: 700;
+        position: relative;
+        left: -2rem;
+        top: 2rem;
+      }
+      .year-content {
+        border: 1px solid $black;
+        padding: 2rem;
+        padding-top: 3rem;
+        background-color: $white;
+        h2 {
+          margin: 0;
+
+        }
+      }
+      .vid-group {
+        margin-bottom: 1rem;
+      }
+      .vid-row {
+        @include flexbox;
+        flex-flow: row wrap;
+        .cypher-artist {
+          &:after {
+            content: ', ';
+          }
+          &:last-child:after {
+            content: ''
+          }
+        }
+        .vid-col {
+          padding: 1rem;
+        }
+        .vid-link {
+          position: relative;
+          @include box-shadow(none);
+          @include transform(translateY(0px));
+          @include transition(box-shadow,transform);
+
+          .vid-thumb {
+            max-width: 100%;
+            height: auto;
+          }
+          .vid-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            @include transform(translate(-50%,-50%));
+            color: $red;
+            font-size: 3rem;
+            @include transition(color);
+          }
+          &:hover {
+            cursor: pointer;
+            @include box-shadow(0 0 15px $red);
+            @include transform(translateY(-3px));
+            .vid-play {
+              color: $white;
+            }
+          }
+        }
+      }
+
+    }
+  }
 }
 .vid-overlay {
   position: fixed;
@@ -92,82 +169,5 @@
     &:before {
 
     }
-  }
-}
-#years {
-  //background-color: $black;
-
-  .year {
-    display: block;
-
-    padding: 1rem 4rem;
-    .year-title {
-      background-color: $red;
-      display: inline-block;
-      color: $white;
-      padding: 0.5rem 1rem;
-      font-size: 3rem;
-      font-weight: 700;
-      position: relative;
-      left: -2rem;
-      top: 2rem;
-    }
-    .year-content {
-      border: 1px solid $black;
-      padding: 2rem;
-      padding-top: 3rem;
-      background-color: $white;
-      h2 {
-        margin: 0;
-
-      }
-    }
-    .vid-group {
-      margin-bottom: 1rem;
-    }
-    .vid-row {
-      @include flexbox;
-      flex-flow: row wrap;
-      .cypher-artist {
-        &:after {
-          content: ', ';
-        }
-        &:last-child:after {
-          content: ''
-        }
-      }
-      .vid-col {
-        padding: 1rem;
-      }
-      .vid-link {
-        position: relative;
-        @include box-shadow(none);
-        @include transform(translateY(0px));
-        @include transition(box-shadow,transform);
-
-        .vid-thumb {
-          max-width: 100%;
-          height: auto;
-        }
-        .vid-play {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          @include transform(translate(-50%,-50%));
-          color: $red;
-          font-size: 3rem;
-          @include transition(color);
-        }
-        &:hover {
-          cursor: pointer;
-          @include box-shadow(0 0 15px $red);
-          @include transform(translateY(-3px));
-          .vid-play {
-            color: $white;
-          }
-        }
-      }
-    }
-
   }
 }

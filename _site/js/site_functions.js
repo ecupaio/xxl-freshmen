@@ -22,6 +22,13 @@ function onYouTubePlayerAPIReady() {
     }
   });
 }
+function playVid() {
+  $('.vid-link').click(function() {
+    var vidId = $(this).data('vid');
+    player.loadVideoById(vidId);
+    $('.vid-overlay').addClass('active');
+  });
+}
 function onPlayerReady(event) {
   $('.close-vid').click(function() {
     $('.vid-overlay').removeClass('active min');
@@ -34,22 +41,32 @@ function onPlayerReady(event) {
   });
 }
 $(function() {
-
   $(window).scroll(function() {
-
     if ($('.vid-overlay').hasClass('active')) {
       $('.vid-overlay').addClass('min');
     }
   });
   //site search
-  $('#search-input').keyup(function() {
+  $('#search-input').on('input',function() {
     $('#results-container').html('');
-    SimpleJekyllSearch({
-      searchInput: document.getElementById('search-input'),
-      resultsContainer: document.getElementById('results-container'),
-      json: '/search.json',
-      searchResultTemplate: '<div>{name}</div>'
-    });
-  });
 
+    //if ($('.search-result .freestyle').data('vid').length < 1){
+      var searchResult = '<div class="search-result" data-artist={artist}>'+
+                            '<h3>{artist}</h3>'+
+                            '<img src="https://img.youtube.com/vi/{freestyle}/mqdefault.jpg"/>'+
+                            '<div class="result-videos">'+
+                              '<div class="vid-link freestyle" onclick="playVid()" data-vid="{freestyle}">Freestyle</div>'+
+                              '<div class="vid-link" onclick="playVid()" data-vid="{cypher}">Cypher</div>'+
+                            '</div>'+
+                         '</div>';
+
+      SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: '/search.json',
+        searchResultTemplate: searchResult
+      });
+    //}
+    console.log($('.search-result .freestyle').data('vid').length)
+  });
 });

@@ -1,0 +1,6 @@
+#results-container {
+  @include flexbox;
+  .search-result {
+    padding: 1rem;
+  }
+}
