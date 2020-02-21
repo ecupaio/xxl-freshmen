@@ -1,22 +1,27 @@
 #home {
   #banner {
-    background-color: $red;
-    color: $white;
+
     text-align: center;
-    padding: 2rem;
+
     h1 {
+      background-color: $red;
+      color: $white;
+      padding: 2rem;
+      display: inline-block;
       text-transform: uppercase;
       margin-top: 0;
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
     }
 
   }
   #years {
-    //background-color: $black;
-
     .year {
       display: block;
-
-      padding: 1rem 4rem;
+      margin: auto;
+      max-width: $size-x-large;
+      padding: 1rem 3rem;
+      font-size: 18px;
       .year-title {
         background-color: $red;
         display: inline-block;
@@ -99,6 +104,7 @@
   z-index: -1;
   padding: 1rem;
   @include transition(opacity,width,height);
+  transform-origin: top left;
   display: none;
   justify-content: center;
   align-items: center;
@@ -114,25 +120,50 @@
       width: 320px;
       height: 180px;
       padding: 0;
+      transform-origin: bottom right;
       iframe {
         width: 100%;
         height: auto;
       }
       .close-vid {
-        top: -1rem;
+        font-size: 1rem;
+        top: -0.5rem;
         left: -0.5rem;
         right: auto;
         z-index: 11;
+
         &:before {
           width: 1.5rem;
           height: 1.5rem;
           @include box-shadow(none);
         }
       }
+      .enlarge-vid {
+        display: block;
+        position: absolute;
+        left: 1.5rem;
+        top: -0.5rem;
+        color: $red;
+        &:before {
+          content: '';
+          height: 1.5rem;
+          width: 1.5rem;
+          background-color: $white;
+          z-index: -1;
+          border-radius: 50%;
+          position: absolute;
+          @include transform(translate(-50%,-50%));
+          top: 50%;
+          left: 50%;
+        }
+
+
+
+      }
     }
   }
   .close-vid {
-    font-size: 2rem;
+    font-size: 1.5rem;
     position: absolute;
     top: 0.5rem;
     right: 1rem;
@@ -152,6 +183,9 @@
       @include transform(translate(-50%,-50%));
       @include transition(width,height);
       @include box-shadow(0px 0px 20px $red);
+    }
+    .enlarge-vid {
+      display: none;
     }
     &:hover {
       &:before {

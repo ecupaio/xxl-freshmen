@@ -1,32 +1,39 @@
 ---
 title: Home Page
 layout: default
-
-
 ---
 <div class="vid-overlay">
   <div class="close-vid">
-    &times;
+    <i class="fa fa-times"></i>
+  </div>
+  <div class="enlarge-vid">
+    <i class="fa fa-expand"></i>
   </div>
   <div id="vid-player">
     <i class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
   </div>
 </div>
 <div id="search-overlay">
-  <div class="search-input-box">
-    <i class="fa fa-search"></i>
-    <input type="text" id="search-input" placeholder="Type Artist name">
-  </div>
-  <div id="results-container">
 
+  <form id="search-form">
+    <div id="search-toggle">
+      <i class="fa fa-search"></i>
+    </div>
+    <div class="search-input-box">
+      <input type="text" id="search-input" placeholder="Type Artist name">
+    </div>
+  </form>
+  <div id="results-container">
   </div>
 </div>
+
 <main id="home">
   <section id="banner">
     <div class="inner-section">
       <h1>XXL Freshmen</h1>
       <p>
-        Every freestyle and cypher indexed from 2009 to current year
+        {% assign most-current = site.years | sort: 'title' | reverse | filter: first %}
+        Every freestyle and cypher indexed from 2009 to {{ most-current[0].title }}
       </p>
 
     </div>

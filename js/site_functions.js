@@ -7,9 +7,8 @@ var player;
 function onYouTubePlayerAPIReady() {
   //video player
   player = new YT.Player('vid-player', {
-    height: '360',
-    width: '640',
-
+    height: '480',
+    width: '854',
     host: 'https://www.youtube.com',
     playerVars: {
       controls: 1,
@@ -39,6 +38,9 @@ function onPlayerReady(event) {
     player.loadVideoById(vidId);
     $('.vid-overlay').addClass('active');
   });
+  $('.enlarge-vid').click(function() {
+    $('.vid-overlay').removeClass('min');
+  });
 }
 $(function() {
   $(window).scroll(function() {
@@ -46,27 +48,34 @@ $(function() {
       $('.vid-overlay').addClass('min');
     }
   });
+  var searchResult = '<div class="search-result" data-artist={artist}>'+
+                        '<h3>{artist}</h3>'+
+                        '<img src="https://img.youtube.com/vi/{freestyle}/mqdefault.jpg"/>'+
+                        '<div class="result-videos">'+
+                          '<div class="vid-link freestyle" onclick="playVid()" data-vid="{freestyle}">Freestyle</div>'+
+                          '<div class="vid-link" onclick="playVid()" data-vid="{cypher}">Cypher</div>'+
+                        '</div>'+
+                     '</div>';
+  var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('results-container'),
+      json: '/search.json',
+      searchResultTemplate: searchResult
+  });
   //site search
-  $('#search-input').on('input',function() {
-    $('#results-container').html('');
-
-    //if ($('.search-result .freestyle').data('vid').length < 1){
-      var searchResult = '<div class="search-result" data-artist={artist}>'+
-                            '<h3>{artist}</h3>'+
-                            '<img src="https://img.youtube.com/vi/{freestyle}/mqdefault.jpg"/>'+
-                            '<div class="result-videos">'+
-                              '<div class="vid-link freestyle" onclick="playVid()" data-vid="{freestyle}">Freestyle</div>'+
-                              '<div class="vid-link" onclick="playVid()" data-vid="{cypher}">Cypher</div>'+
-                            '</div>'+
-                         '</div>';
-
-      SimpleJekyllSearch({
-        searchInput: document.getElementById('search-input'),
-        resultsContainer: document.getElementById('results-container'),
-        json: '/search.json',
-        searchResultTemplate: searchResult
-      });
-    //}
-    console.log($('.search-result .freestyle').data('vid').length)
+  $('#search-form').on('submit',function(e) {
+    console.log('submited search');
+    e.preventDefault();
+    var query = $('#search-input').val();
+    if (query.length >= 2) {
+      sjs.search(query);
+      $('.search-result').remove();
+    }
+  });
+  $('#search-toggle').click(function() {
+    $('#search-overlay').addClass('active');
+  });
+  $('.close-search').click(function() {
+    $('#search-overlay').removeClass('active');
   });
 });

@@ -42,7 +42,7 @@ $(function(){
                               '<div class="vid-container cyphers"></div>'+
                             '</div>'+
                             '<div class="vid-container artists">'+
-                              '<h3>'
+                              '<h3>'+
                             '</div>'+
                           '</div>'+
                         '</div>';
