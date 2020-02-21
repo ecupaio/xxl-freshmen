@@ -48,7 +48,7 @@ $(function() {
       $('.vid-overlay').addClass('min');
     }
   });
-  var searchResult = '<div class="search-result" data-artist={artist}>'+
+  var searchResult = '<div class="search-result" data-artist="{artist}">'+
                         '<h3>{artist}</h3>'+
                         '<img src="https://img.youtube.com/vi/{freestyle}/mqdefault.jpg"/>'+
                         '<div class="result-videos">'+
@@ -60,16 +60,29 @@ $(function() {
       searchInput: document.getElementById('search-input'),
       resultsContainer: document.getElementById('results-container'),
       json: '/search.json',
-      searchResultTemplate: searchResult
+      searchResultTemplate: searchResult,
+      templateMiddleware: refineResults()
   });
+  function refineResults() {
+    $('.search-result').each(function() {
+      $(this).find('.freestyle[data-vid="{freestyle}"]').addClass('hidden');
+    });
+    console.log('success');
+  }
   //site search
-  $('#search-form').on('submit',function(e) {
-    console.log('submited search');
+  $('#search-form').submit(function(e) {
+    e.preventDefault();
+  });
+  $('#search-form .search-input-box').on('input',function(e) {
     e.preventDefault();
     var query = $('#search-input').val();
     if (query.length >= 2) {
       sjs.search(query);
+      $('.search-result').each(function() {
+          $(this).find('.freestyle[data-vid="{freestyle}"]').addClass('hidden');
+      });
       $('.search-result').remove();
+
     }
   });
   $('#search-toggle').click(function() {

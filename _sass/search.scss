@@ -1,25 +1,19 @@
-#results-container {
-  @include flexbox;
-  .search-result {
-    padding: 1rem;
-  }
-}
-.search-input-box {
-  width: 0;
-  height: 0;
-  overflow: hidden;
-  @include transition(width);
-}
+
 #search-form {
-  @include flexbox;
+  position: relative;
   max-width: $size-medium;
   margin: auto;
+  .search-input-box {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    @include transition(width);
+  }
 }
-
 #search-toggle {
   font-size: 1.5rem;
 
-  position: relative;
+  position: absolute;
   height: 1.5em;
   width: 1.5em;
   @include box-shadow;
@@ -39,9 +33,11 @@
     width: 100%;
     height: 100%;
     z-index: 9;
+    overflow-y: scroll;
     background-color: $white;
+
     #search-toggle {
-      left: 34px;
+      left: 0;
       background-color:$red;
       color: $white;
       @include box-shadow(none);
@@ -60,5 +56,17 @@
 
       }
     }
+    #results-container {
+      border: 1px solid $black;
+      padding: 2rem;
+      max-width: $size-large;
+      margin: 2rem auto;
+      flex-flow: row wrap;
+      @include flexbox;
+      .search-result {
+        padding: 1rem;
+      }
+    }
   }
+
 }
