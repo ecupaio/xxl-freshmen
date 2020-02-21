@@ -96,6 +96,8 @@ $(function() {
                   $('.search-result[data-artist="'+artist+'"] .artist-img').append('<img src="https://img.youtube.com/vi/'+freestyle+'/mqdefault.jpg" class="artist-thumb" alt="">');
                   $('.search-result[data-artist="'+artist+'"] .result-videos').append('<div class="vid-link freestyle" data-vid="'+freestyle+'">Freestyle</div>');
                   playVid();
+                } else {
+                  $('.search-result[data-artist="'+artist+'"] .artist-img').append('<img src="https://img.youtube.com/vi/'+cypher+'/mqdefault.jpg" class="artist-thumb" alt="">');
                 }
                 if (cypher.length > 0) {
                   $('.search-result[data-artist="'+artist+'"] .result-videos').append('<div class="vid-link" data-vid="'+cypher+'">Cypher</div>');
