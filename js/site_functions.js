@@ -104,10 +104,13 @@ $(function() {
                   playVid();
                 }
               }
+
             } else {
 
             }
           });
+          console.log($('.search-result').length);
+
         }, error: function(data) {
           console.log('error');
         }
@@ -116,6 +119,12 @@ $(function() {
     if (query.length < 2) {
       $('.search-result').remove();
     }
+    if ($('.search-result').length > 0) {
+      $('#results-container').removeClass('hidden');
+    } else {
+      $('#results-container').addClass('hidden');
+    }
+
   });
   $('#search-toggle').click(function() {
     $('#search-overlay').addClass('active');
