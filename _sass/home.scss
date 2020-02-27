@@ -2,7 +2,7 @@
   #banner {
 
     text-align: center;
-
+    padding: 2rem;
     h1 {
       background-color: $red;
       color: $white;
@@ -35,9 +35,12 @@
       }
       .year-content {
         border: 1px solid $black;
-        padding: 2rem;
-        padding-top: 3rem;
+        padding: 3rem 2rem 2rem;
+
         background-color: $white;
+        @include bp-medium {
+          padding: 3rem 1rem 1rem;
+        }
         h2 {
           margin: 0;
 
@@ -59,16 +62,22 @@
         }
         .vid-col {
           padding: 1rem;
+          flex: auto;
+          max-width: 350px;
+          @include bp-medium {
+            padding: 1rem 0;
+          }
         }
         .vid-link {
           position: relative;
           @include box-shadow(none);
           @include transform(translateY(0px));
           @include transition(box-shadow,transform);
-
+          display: inline-block;
           .vid-thumb {
             max-width: 100%;
             height: auto;
+            display: block;
           }
           .vid-play {
             position: absolute;

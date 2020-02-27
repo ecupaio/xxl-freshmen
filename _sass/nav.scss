@@ -1,0 +1,73 @@
+#sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba($white,0.7);
+  z-index: 8;
+  padding: 1rem;
+  @include transform(translateY(-100%));
+  @include transition(transform);
+  .inner-nav {
+    max-width: $size-x-large;
+    margin: auto;
+    position: relative;
+  }
+  .display-year {
+    background-color: $red;
+    color: $white;
+    padding: 0.5rem 1rem;
+    left: 1rem;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    @include bp-medium {
+      left: 0;
+    }
+    .year-text {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+    .nav-year-toggle {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      @include transform(rotate(0deg));
+      @include transition(transform);
+    }
+    &.active {
+      .nav-year-toggle {
+        @include transform(rotate(180deg));
+      }
+    }
+  }
+  .nav-year-list {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: none;
+    position: absolute;
+    background-color: $white;
+    width: 100%;
+    left: 0;
+    top: 4.5rem;
+    max-height: 500px;
+    overflow-y: scroll;
+    @include box-shadow;
+    .nav-year {
+      padding: 0.5rem 0;
+      a {
+        color: $red;
+        font-size: 1.5rem;
+        padding: 0.5rem;
+      }
+    }
+  }
+
+  &.active {
+    @include transform(translateY(0%));
+  }
+}

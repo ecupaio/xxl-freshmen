@@ -29,9 +29,9 @@
 }
 #search-overlay {
   position: fixed;
-  z-index: 1;
-  padding: 1rem;
-  right: 2rem;
+  z-index: 9;
+  top: 1.5rem;
+  right: 3rem;
   .close-icon {
     display: none;
   }
@@ -41,15 +41,19 @@
     height: 100%;
     z-index: 9;
     right: 0;
+    top: 0;
     left: 0;
     overflow-y: scroll;
     text-align: center;
     background-color: $white;
+    @include bp-medium {
+      padding: 4rem 3rem;
+    }
     .close-icon {
       display: inline-block;
       position: absolute;
       top: 1rem;
-      left: 2rem;
+      right: 2rem;
       font-size: 1.5rem;
       color: $red;
     }

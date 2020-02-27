@@ -13,6 +13,27 @@ layout: default
     <i class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
   </div>
 </div>
+<div id="sticky-nav">
+  <div class="inner-nav">
+    <div class="display-year">
+      <div class="year-text">
+
+      </div>
+      <div class="nav-year-toggle">
+        <i class="fa fa-chevron-down"></i>
+      </div>
+      <ul class="nav-year-list">
+        {% assign years-list = site.years | reverse %}
+        {% for year in years-list %}
+        <li class="nav-year" data-year="{{year.title}}">
+          <a href="#y-{{ year.title }}">{{ year.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+</div>
 <div id="search-overlay">
   <div class="close-search close-icon">
     <i class="fa fa-times"></i>
@@ -34,13 +55,14 @@ layout: default
   </div>
 </div>
 
+
 <main id="home">
   <section id="banner">
     <div class="inner-section">
-      <h1>XXL Freshmen</h1>
+      <h1>XXL Freshmen Archive</h1>
       <p>
         {% assign most-current = site.years | sort: 'title' | reverse | filter: first %}
-        Every freestyle and cypher indexed from 2009 to {{ most-current[0].title }}
+        Every freestyle and cypher archived from 2009 to {{ most-current[0].title }}
       </p>
 
     </div>
@@ -53,7 +75,7 @@ layout: default
       {% assign cyphers = year.artists | map: 'cypher' | uniq %}
       {% assign freestyles = year.artists | map: 'freestyle' | uniq %}
 
-      <div class="year">
+      <div class="year" id="y-{{ year.title }}" data-year="{{ year.title }}">
 
         <div class="year-title">
           {{ year.title }}
@@ -120,3 +142,6 @@ layout: default
   </section>
 
 </main>
+<footer>
+  <a href="https://edcupaioli.com">Made with <i class="fa fa-heart"></i> by Ed Cupaioli</a>
+</footer>

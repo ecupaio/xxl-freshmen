@@ -5,10 +5,20 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 
 function onYouTubePlayerAPIReady() {
+  var vidWidth;
+  var vidHeight;
+  if ($(window).width() < 568) {
+    vidWidth = 330;
+    vidHeight = 185;
+  } else {
+    vidWidth = 854;
+    vidHeight = 480;
+  }
+  console.log($(window).width);
   //video player
   player = new YT.Player('vid-player', {
-    height: '480',
-    width: '854',
+    height: vidHeight,
+    width: vidWidth,
     host: 'https://www.youtube.com',
     playerVars: {
       controls: 1,
@@ -131,5 +141,33 @@ $(function() {
   });
   $('.close-search').click(function() {
     $('#search-overlay').removeClass('active');
+  });
+
+  //nav
+  $(window).on('scroll', function() {
+    var scrollTop = $(this).scrollTop();
+    $('.year').each(function() {
+      var topDistance = $(this).offset().top;
+      if ((topDistance+20) < scrollTop ) {
+        var currentYear = $(this).data('year');
+        $('.year-text').text(currentYear);
+      }
+    });
+    if ($('.year:eq(0)').offset().top + 100 < scrollTop ) {
+      $('#sticky-nav').addClass('active');
+    } else {
+      $('#sticky-nav').removeClass('active');
+    }
+  });
+  $('.display-year').click(function() {
+    $(this).toggleClass('active');
+    $('.nav-year-list').slideToggle();
+  });
+  $('.nav-year a').click(function(e) {
+    e.preventDefault();
+    var selectedYear = $(this).attr('href');
+    $('body,html').animate({
+        scrollTop: $(selectedYear).offset().top + 31
+    }, 500);
   });
 });
