@@ -49,3 +49,16 @@ input,textarea {
 		white-space: normal;
 	}
 }
+
+
+footer {
+	background-color: $red;
+	color: $white;
+	padding: 0.5rem 1rem;
+	a {
+		color: $white;
+		&:hover,&:active, &:focus {
+			color: $white;
+		}
+	}
+}
