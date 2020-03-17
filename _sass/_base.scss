@@ -55,11 +55,21 @@ footer {
 	background-color: $red;
 	color: $white;
 	padding: 0.5rem 1rem;
-	text-align: right;
+	@include flexbox;
+	justify-content: space-between;
+	align-items: center;
 	a {
 		color: $white;
 		&:hover,&:active, &:focus {
 			color: $white;
+		}
+	}
+	.social-share {
+		.share-btn {
+			display: inline-block;
+			vertical-align: middle;
+			margin-right: 1rem;
+			font-size: 1.5rem;
 		}
 	}
 }

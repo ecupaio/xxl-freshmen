@@ -13,8 +13,20 @@ layout: compress
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.gtm }}"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    <!-- End Google Tag Manager (noscript) -->    
     {% endif %}
+    <!-- Facebook Share -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId            : '1600385656930377',
+          autoLogAppEvents : true,
+          xfbml            : true,
+          version          : 'v6.0'
+        });
+      };
+    </script>
+    <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
     {% include nav.html %}
     {{ content }}
     <!-- Scripts -->

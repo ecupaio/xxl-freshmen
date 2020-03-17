@@ -14,7 +14,6 @@ function onYouTubePlayerAPIReady() {
     vidWidth = 854;
     vidHeight = 480;
   }
-  console.log($(window).width);
   //video player
   player = new YT.Player('vid-player', {
     height: vidHeight,
@@ -170,4 +169,15 @@ $(function() {
         scrollTop: $(selectedYear).offset().top + 31
     }, 500);
   });
+
+  //FB share
+  var siteUrl = "https://ecupaio.github.io/xxl-freshmen/";
+  $('.share-btn.facebook').click(function() {
+    FB.ui({
+      method: 'share',
+      display: 'popup',
+      href: siteUrl,
+    }, function(response){});
+  });
+
 });
