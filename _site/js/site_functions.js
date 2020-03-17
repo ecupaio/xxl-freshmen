@@ -179,5 +179,4 @@ $(function() {
       href: siteUrl,
     }, function(response){});
   });
-
 });
