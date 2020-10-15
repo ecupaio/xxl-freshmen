@@ -16,6 +16,7 @@ exclude:
 - Gemfile.lock
 - node_modules
 - gruntfile.js
+- vendor
 sass:
   sass_dir: _sass
   style: compressed
